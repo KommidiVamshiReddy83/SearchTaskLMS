@@ -1,36 +1,49 @@
-import React from 'react';
-import SearchBox from './Searchbox';
-
+import React, { useEffect, useRef } from 'react';
+import SearchBox from './SearchBox';
 
 export default function Navbar({ onSelect }) {
-return (
-<div style={styles.navbar}>
-<div style={styles.logo}>LMS Universe</div>
-<SearchBox onSelect={onSelect} />
-<div style={styles.buttons}>
+  const navRef = useRef(null);
 
-</div>
-</div>
-);
+  
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!navRef.current?.contains(e.target)) {
+        const input = document.querySelector('#search-input');
+        if (input) input.blur();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <nav style={styles.navbar} ref={navRef}>
+      <div style={styles.logo}>LMS</div>
+      <SearchBox onSelect={onSelect} />
+      <div style={styles.buttons}>
+  
+      </div>
+    </nav>
+  );
 }
 
-
 const styles = {
-navbar: {
-display: 'flex',
-alignItems: 'center',
-justifyContent: 'space-between',
-padding: '10px 20px',
-backgroundColor: '#fff',
-boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-},
-logo: { fontSize: '20px', fontWeight: 'bold' },
-buttons: { display: 'flex', gap: '10px' },
-button: {
-border: '1px solid #ccc',
-backgroundColor: '#fff',
-borderRadius: '5px',
-padding: '5px 10px',
-cursor: 'pointer',
-},
+  navbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '12px 24px',
+    backgroundColor: '#ffffff',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+    position: 'sticky',
+    top: 0,
+    zIndex: 100,
+  },
+  logo: { 
+    fontSize: '22px', 
+    fontWeight: '700', 
+    color: '#2c3e50', 
+    letterSpacing: '0.5px' 
+  },
+  buttons: { display: 'flex', gap: '12px' },
 };
