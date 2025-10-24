@@ -17,7 +17,7 @@ export default function Suggestions({ suggestions, active, onSelect, setActive }
             onSelect(item);
           }}
         >
-          <span style={styles.icon}>📘</span> {item}
+          <span style={styles.icon}> </span> {item}
         </li>
       ))}
     </ul>

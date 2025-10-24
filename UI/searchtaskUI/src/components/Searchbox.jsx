@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import SuggestionList from "./Suggestions";
+import Suggestions from "./Suggestions";
 
 export default function SearchBox({ onSelect }) {
   const [query, setQuery] = useState("");
@@ -57,8 +57,6 @@ export default function SearchBox({ onSelect }) {
 
   const handleKeys = (e) => {
     if (!visible) return;
-    if (e.key === "ArrowDown") setHighlighted((i) => Math.min(i + 1, suggestions.length - 1));
-    else if (e.key === "ArrowUp") setHighlighted((i) => Math.max(i - 1, 0));
     else if (e.key === "Enter") {
       e.preventDefault();
       if (suggestions[highlighted]) chooseSuggestion(suggestions[highlighted]);
@@ -89,25 +87,22 @@ export default function SearchBox({ onSelect }) {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => suggestions.length && setVisible(true)}
           onKeyDown={handleKeys}
-          placeholder="🔍 Search for a course..."
+          placeholder="Search Java,SpringBoot......"
           style={styles.input}
         />
-        <button type="submit" style={styles.btn}>
-          Go
-        </button>
       </form>
 
       {visible && (
         <div style={styles.dropdown}>
           {suggestions.length > 0 ? (
-            <SuggestionList
+            <Suggestions
               suggestions={suggestions}
               active={highlighted}
               onSelect={chooseSuggestion}
               setActive={setHighlighted}
             />
           ) : (
-            noResult && <div style={styles.noResults}>No matches found 🚫</div>
+            noResult && <div style={styles.noResults}>No matches found </div>
           )}
         </div>
       )}

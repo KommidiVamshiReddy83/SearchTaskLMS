@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar.jsx';
 
 export default function App() {
-const [selected, setSelected] = useState(null);
 return (
 <div>
-<Navbar onSelect={(p) => setSelected(p)} />
-<div style={styles.main}>
-{selected && <div style={styles.resultBox}>You selected: <strong>{selected}</strong></div>}
-</div>
+<Navbar />
 </div>
 );
 }

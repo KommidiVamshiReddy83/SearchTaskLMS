@@ -1,7 +1,6 @@
 import React from "react";
-import SearchBar from "./Searchbox";
-
-export default function Navbar({ onSelect }) {
+import SearchBox from "./Searchbox";
+export default function Navbar() {
   return (
     <header style={styles.container}>
       <div style={styles.leftSection}>
@@ -9,7 +8,7 @@ export default function Navbar({ onSelect }) {
       </div>
 
       <div style={styles.centerSection}>
-        <SearchBar onSelect={onSelect} />
+        <SearchBox />
       </div>
 
      
