@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <header style={styles.container}>
       <div style={styles.leftSection}>
-        <span style={styles.logo}>📘 Talents Mind LMS</span>
+        <span style={styles.logo}> Talents Mind LMS</span>
       </div>
 
       <div style={styles.centerSection}>

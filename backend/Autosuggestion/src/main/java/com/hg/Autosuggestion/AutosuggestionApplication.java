@@ -10,5 +10,4 @@ public class AutosuggestionApplication {
 		SpringApplication.run(AutosuggestionApplication.class, args);
 		System.out.println("hey i am running.....................");
 	}
-
 }
